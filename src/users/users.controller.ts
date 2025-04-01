@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './users.model';
+import { ValidateUserPipe } from 'src/pipes/validate-user.pipe';
 
 @Controller('users')
 export class UsersController {
@@ -18,7 +19,7 @@ export class UsersController {
     }
 
     @Post()
-    createUser(@Body() user: User) {
+    createUser(@Body(new ValidateUserPipe()) user: User) {
         return this.userService.create(user)
     }
 
