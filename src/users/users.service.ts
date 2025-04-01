@@ -7,7 +7,7 @@ export class UsersService {
 
 
     findAll(): User[] {
-        this.users;
+        return this.users;
     }
 
     findOne(id: number): User | undefined {
